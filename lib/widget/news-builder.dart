@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/screens/articles-screen.dart';
 
 class NewsBuilder extends StatelessWidget {
   final String title;
@@ -23,12 +24,21 @@ class NewsBuilder extends StatelessWidget {
           padding: EdgeInsets.all(10),
           child: Column(
             children: [
-              Container(
-                height: 200,
-                width: double.infinity,
-                child: Image.network(
-                  imageUrl,
-                  fit: BoxFit.cover,
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (ctx) => ArticlePage(url: url),
+                    ),
+                  );
+                },
+                child: Container(
+                  height: 200,
+                  width: double.infinity,
+                  child: Image.network(
+                    imageUrl,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               SizedBox(

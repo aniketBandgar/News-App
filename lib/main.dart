@@ -11,19 +11,19 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (ctx) => NewsDataList(),
-      child: ChangeNotifierProvider(
-        create: (ctx) => CategoryNewsData(),
-        child: MaterialApp(
-          title: 'Flutter Demo',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            primaryColor: Colors.white,
-            canvasColor: Colors.white,
-          ),
-          home: HomeScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (ctx) => NewsDataList()),
+        ChangeNotifierProvider(create: (ctx) => CategoryNewsData()),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: Colors.white,
+          canvasColor: Colors.white,
         ),
+        home: HomeScreen(),
       ),
     );
   }
