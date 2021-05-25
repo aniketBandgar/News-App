@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/screens/articles-screen.dart';
+import '../screens/newsWebView.dart';
 
 class NewsBuilder extends StatelessWidget {
   final String title;
@@ -28,7 +28,7 @@ class NewsBuilder extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (ctx) => ArticlePage(url: url),
+                      builder: (ctx) => WebViewExample(url),
                     ),
                   );
                 },

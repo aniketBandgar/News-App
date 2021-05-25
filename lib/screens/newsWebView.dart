@@ -1,20 +1,22 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class ArticlePage extends StatefulWidget {
+class WebViewExample extends StatefulWidget {
   final String url;
-  ArticlePage({@required this.url});
+  WebViewExample(this.url);
 
   @override
-  _ArticlePageState createState() => _ArticlePageState();
+  WebViewExampleState createState() => WebViewExampleState();
 }
 
-class _ArticlePageState extends State<ArticlePage> {
+class WebViewExampleState extends State<WebViewExample> {
   @override
   void initState() {
     super.initState();
+
     if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
   }
 
@@ -23,7 +25,7 @@ class _ArticlePageState extends State<ArticlePage> {
     return Scaffold(
       appBar: AppBar(
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text('Flutter'),
             Text(
@@ -34,10 +36,10 @@ class _ArticlePageState extends State<ArticlePage> {
             ),
           ],
         ),
-        elevation: 0,
       ),
       body: WebView(
         initialUrl: widget.url,
+        javascriptMode: JavascriptMode.unrestricted,
       ),
     );
   }
